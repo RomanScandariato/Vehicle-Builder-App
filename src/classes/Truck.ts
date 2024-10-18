@@ -38,6 +38,12 @@ class Truck extends Vehicle implements AbleToTow{
     this.topSpeed = topSpeed;
     this.wheels = wheels;
     this.towingCapacity = towingCapacity;
+
+    if (wheels.length !== 2) {
+      this.wheels = [new Wheel(), new Wheel()];
+    } else {
+      this.wheels = wheels;
+    }
   }
   // TODO: The properties should include vin, color, make, model, year, weight, top speed, wheels, and towing capacity
   // TODO: The types should be as follows: vin (string), color (string), make (string), model (string), year (number), weight (number), topSpeed (number), wheels (Wheel[]), towingCapacity (number)
@@ -63,15 +69,22 @@ class Truck extends Vehicle implements AbleToTow{
   }
 
   // TODO: Override the printDetails method from the Vehicle class
+  override printDetails(): void {
     // TODO: The method should call the printDetails method of the parent class
+    super.printDetails();
+    
     // TODO: The method should log the details of the Truck
-    // TODO: The details should include the VIN, make, model, year, weight, top speed, color, towing capacity, and wheels
+    console.log(`VIN: ${this.vin}`);
+    console.log(`Make: ${this.make}`);
+    console.log(`Model: ${this.model}`);
+    console.log(`Year: ${this.year}`);
+    console.log(`Weight: ${this.weight}`);
+    console.log(`Top Speed: ${this.topSpeed}`);
+    console.log(`Color: ${this.color}`);
+    console.log(`Towing Capacity: ${this.towingCapacity}`);
+    console.log(`Wheels: ${this.wheels.length}`);
+  }
 }
-
-const f150 = new Truck();
-const camry = new Car();
-
-f150.tow(camry);
 
 // Export the Truck class as the default export
 export default Truck;
